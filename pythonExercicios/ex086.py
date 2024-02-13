@@ -1,20 +1,16 @@
-matriz = [[],
-          [],
-          []
-          ]
-count = 0
-while count < 3:
-    for c in range(0,3):
-        num = int(input(f"DIgite um valor para [{count},{c}]: "))
-        matriz[count].append(num)
-    count += 1
-print(matriz)
-print("++"*30)
-for p in matriz[0]:
-    print(f"[{p:^5}]" ,end="")
-print()
-for x in matriz[1]:
-    print(f"[{x:^5}]", end="")
-print()
-for t in matriz[2]:
-    print(f"[{t:^5}]", end ="")
+# Inicialização de uma matriz vazia com três listas vazias
+matriz = [[], [], []]
+
+# Loop aninhado para percorrer as linhas e colunas da matriz
+for l in range(0, 3):  # Itera sobre as linhas (l) da matriz
+    for c in range(0, 3):  # Itera sobre as colunas (c) da matriz
+        # Solicita ao usuário um número e o adiciona à lista na linha l da matriz
+        num = int(input(f"Qual o número você quer adicionar à posição {l}, {c}: "))
+        matriz[l].append(num)  # Adiciona o número à lista na posição l da matriz
+
+# Loop aninhado para percorrer as linhas e colunas da matriz e imprimir seus elementos
+for l in range(0, 3):  # Itera sobre as linhas (l) da matriz
+    for c in range(0, 3):  # Itera sobre as colunas (c) da matriz
+        # Imprime o elemento da posição l,c entre colchetes e com espaço após
+        print(f"[{matriz[l][c]}]", end=" ")
+    print()  # Imprime uma nova linha após imprimir todos os elementos de uma linha da matriz

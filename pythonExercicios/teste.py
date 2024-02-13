@@ -1,48 +1,46 @@
-lista  = []
-contP = 0
+total = []
+temp = [] #vai guardar o nome, a lista com as duas notas, além da média
+notas = []
 
 while True:
-    pessoas = []
-    nome = input("Qual o primeiro nome: ")
-    contP += 1
-    pessoas.append(nome)
-    peso = int(input("Qual o peso: "))
-    pessoas.append(peso)
-    lista.append(pessoas[:]) #por enquanto eu só peguei os dados e copiei para uma lista 
+    temp = [] #vai guardar o nome, a lista com as duas notas, além da média
+    notas = []
+    nome = input("Qual o nome do aluno: ")
+    temp.append(nome)
+    #pegando as notas e guardando em uma lista
+    nota1 = int(input("Qual a primeira nota: "))
+    notas.append(nota1)
+    nota2 = int(input("Qual a sua segunda nota: "))
+    notas.append(nota2)
     
-    decisao  = input("Voçê quer continuar adicionando pessoas? ").upper().strip()
-    if decisao in "N":
+    temp.append(notas[:])
+    
+    media = (nota1 + nota2)/2
+    temp.append(media)
+    total.append(temp[:])
+    temp.clear() 
+    resp = " "
+    while resp not in "NnSs":
+        resp = input("Voçê deseja continuar? [S] [N]: ").upper().strip()[0]
+    if resp == "N":
+        # Break out of the loop if the user chooses not to continue
         break
-#Agora eu quero pegar os valores das pessoas mais pesadas e leves    
-pesoMenor = pesoMaior = 0
-nomeMenor = [] #Nome das pessoas que pesam meno kilos
-nomeMaior = []
-contador = 0
-while contador < len(lista):
-    if contador == 0:
-        pesoMaior = lista[contador][1]
-        pesoMenor = lista[contador][1]
-        nomeMenor = [lista[contador][0]]
-        nomeMaior = [lista[contador][0]]
-    else:
-        if pesoMenor > lista[contador][1]:
-            pesoMenor = lista[contador][1]
-            nomeMenor = [lista[contador][0]]
-        elif pesoMenor == lista[contador][1]:
-            nomeMenor.append(lista[contador][0])
-        
-        if pesoMaior < lista[contador][1]:
-            pesoMaior = lista[contador][1]
-            nomeMaior = [lista[contador][0]]
-        elif pesoMaior == lista[contador][1]:
-            nomeMaior.append(lista[contador][0])
-    contador += 1
-        
-print(f"A lista teve {contP} cadastradas, além disso essas foram as pessoas mais pesadas {nomeMaior}")
-print(f"E essas foram com o menor peso {nomeMenor}")            
-        
+print(total)
+
+print("Boletim:")
+for idx, aluno in enumerate(total):
+    print(f"Aluno {idx}: {aluno[0]}, Média: {aluno[2]}")
+escolha = int(input("Qual aluno voçê gostaria que fosse mostrado: "))
+for idx, aluno in enumerate(total):
+    if idx == escolha:
+        print("As notas foram: ")
+        for c in total[idx][1]:
+            print(f"A nota é: {c}")
+
     
     
+    
+
 
 
 
